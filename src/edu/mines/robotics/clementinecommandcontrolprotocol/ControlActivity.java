@@ -1,13 +1,12 @@
 package edu.mines.robotics.clementinecommandcontrolprotocol;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Set;
-
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -22,13 +21,34 @@ public class ControlActivity extends Activity {
     BluetoothAdapter mBluetoothAdapter;
     BluetoothDevice mmDevice;
     TextView statusText;
+    ArrayList<Button> buttons;
+    Button connectButton;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_control);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		
-		ArrayList<Button> buttons = new ArrayList<Button>();
+		connectButton = (Button) findViewById(R.id.connectButton);
+		statusText = (TextView) findViewById(R.id.statusText);
+		
+		//Connect Button
+        connectButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                try {
+                	findBT();
+    				//openBT();
+                } catch (Exception e) {
+                	Log.e("CCCP", "Failure", e);
+                }
+            }
+        });
+        
+	}
+	
+	void addButtons() {
+		buttons = new ArrayList<Button>();
 		Button driveFwd = (Button) findViewById(R.id.driveFwd);
 		Button driveBck = (Button) findViewById(R.id.driveBck);
 		Button baseLeft = (Button) findViewById(R.id.baseLeft);
@@ -50,23 +70,8 @@ public class ControlActivity extends Activity {
 		for (int i = 0; i < buttons.size(); i++) {
 			buttons.get(i).setOnTouchListener(listener);
 		}
-		
-		Button connectButton = (Button) findViewById(R.id.connectButton);
-		statusText = (TextView) findViewById(R.id.statusText);
-		//Connect Button
-        connectButton.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                try {
-                	findBT();
-    				//openBT();
-                } catch (Exception e) {
-                	Log.e("CCCP", "Failure", e);
-                }
-            }
-        });
 	}
+	
 	/*
 	 * Status of testing:
 	 * - bluetooth does not work on emulation
@@ -83,28 +88,24 @@ public class ControlActivity extends Activity {
 	 * - E2 means pin 2, similarly for other pins (pin 4 is E4, etc).
 	 */
 	// http://bellcode.wordpress.com/2012/01/02/android-and-arduino-bluetooth-communication/
-	void findBT()
-    {
+	
+	void findBT() {
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        if(mBluetoothAdapter == null)
-        {
+        if (mBluetoothAdapter == null) {
             statusText.setText("No bluetooth adapter available");
             return;
         }
         
-        if(!mBluetoothAdapter.isEnabled())
-        {
+        if (!mBluetoothAdapter.isEnabled()) {
             Intent enableBluetooth = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBluetooth, 0);
         }
         
         Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
-        if(pairedDevices.size() > 0)
-        {
-            for(BluetoothDevice device : pairedDevices)
-            {
-                if(device.getName().equals("BlueClementine-5ACA")) // name of our adapter 
-                {
+        if (pairedDevices.size() > 0) {
+            for (BluetoothDevice device : pairedDevices) {
+            	// name of our adapter
+                if (device.getName().equals("BlueClementine-5ACA")) {
                     mmDevice = device;
                     break;
                 }
