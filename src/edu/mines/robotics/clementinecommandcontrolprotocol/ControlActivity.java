@@ -30,6 +30,8 @@ public class ControlActivity extends Activity {
 		setContentView(R.layout.activity_control);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		
+		buttons = new ArrayList<Button>();
+		addButtons();
 		connectButton = (Button) findViewById(R.id.connectButton);
 		statusText = (TextView) findViewById(R.id.statusText);
 		
@@ -47,8 +49,8 @@ public class ControlActivity extends Activity {
         
 	}
 	
-	void addButtons() {
-		buttons = new ArrayList<Button>();
+	// add buttons to array with touch listeners
+	void addButtons() {		
 		Button driveFwd = (Button) findViewById(R.id.driveFwd);
 		Button driveBck = (Button) findViewById(R.id.driveBck);
 		Button baseLeft = (Button) findViewById(R.id.baseLeft);
@@ -57,6 +59,14 @@ public class ControlActivity extends Activity {
 		Button armDown = (Button) findViewById(R.id.armDown);
 		Button turnRight = (Button) findViewById(R.id.turnRight);
 		Button turnLeft = (Button) findViewById(R.id.turnLeft);
+		Button wristUp = (Button) findViewById(R.id.wristUp);
+		Button wristDown = (Button) findViewById(R.id.wristDown);
+		Button elbowLeft = (Button) findViewById(R.id.elbowLeft);
+		Button elbowRight = (Button) findViewById(R.id.elbowRight);
+		Button clawOpen = (Button) findViewById(R.id.clawOpen);
+		Button clawClose = (Button) findViewById(R.id.clawClose);
+		Button rotateLeft = (Button) findViewById(R.id.rotateLeft);
+		Button rotateRight = (Button) findViewById(R.id.rotateRight);
 		
 		buttons.add(driveFwd);
 		buttons.add(driveBck);
@@ -66,7 +76,16 @@ public class ControlActivity extends Activity {
 		buttons.add(armDown);
 		buttons.add(turnRight);
 		buttons.add(turnLeft);
-			
+		buttons.add(wristUp);
+		buttons.add(wristDown);
+		buttons.add(elbowLeft);
+		buttons.add(elbowRight);
+		buttons.add(clawOpen);
+		buttons.add(clawClose);
+		buttons.add(rotateLeft);
+		buttons.add(rotateRight);
+		
+		// add touch listeners
 		for (int i = 0; i < buttons.size(); i++) {
 			buttons.get(i).setOnTouchListener(listener);
 		}

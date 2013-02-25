@@ -21,55 +21,191 @@
     tools:context=".ControlActivity" >
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/elbowRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button6"
-        android:layout_toRightOf="@+id/button6"
-        android:text="Right" />
+        android:layout_below="@+id/wristUp"
+        android:layout_toRightOf="@+id/wristUp"
+        android:text="@string/right" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/elbowLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/button6"
+        android:layout_below="@+id/wristUp"
         android:layout_marginLeft="22dp"
-        android:text="Left" />
+        android:text="@string/left" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/wristUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button7"
-        android:layout_toRightOf="@+id/button8"
-        android:text="Down" />
+        android:layout_alignLeft="@+id/wristDown"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="39dp"
+        android:text="@string/up" />
 
     <Button
-        android:id="@+id/driveBck"
+        android:id="@+id/rotateLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/clawOpen"
+        android:layout_toLeftOf="@+id/clawOpen"
+        android:text="@string/left" />
+
+    <TextView
+        android:id="@+id/elbowText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/elbowRight"
+        android:layout_alignBottom="@+id/elbowRight"
+        android:layout_toRightOf="@+id/baseRight"
+        android:text="@string/elbow" />
+
+    <TextView
+        android:id="@+id/wristText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/clawOpen"
+        android:layout_alignLeft="@+id/wristUp"
+        android:text="@string/wrist" />
+
+    <TextView
+        android:id="@+id/turnText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/turnLeft"
+        android:layout_alignBottom="@+id/turnLeft"
+        android:layout_toLeftOf="@+id/turnLeft"
+        android:text="@string/turn" />
+
+    <TextView
+        android:id="@+id/rotateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/rotateLeft"
+        android:layout_alignBottom="@+id/rotateLeft"
+        android:layout_toLeftOf="@+id/rotateLeft"
+        android:text="@string/rotate" />
+
+    <TextView
+        android:id="@+id/baseText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/baseRight"
+        android:layout_alignBottom="@+id/baseRight"
+        android:layout_toRightOf="@+id/baseRight"
+        android:text="@string/base" />
+
+    <Button
+        android:id="@+id/connectButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/connect" />
+
+    <TextView
+        android:id="@+id/armText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/armUp"
+        android:layout_alignRight="@+id/wristText"
+        android:text="@string/arm" />
+
+    <TextView
+        android:id="@+id/clawText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/clawOpen"
+        android:layout_toRightOf="@+id/rotateLeft"
+        android:text="@string/claw" />
+
+    <TextView
+        android:id="@+id/driveText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/driveFwd"
         android:layout_alignLeft="@+id/driveFwd"
-        android:layout_below="@+id/turnLeft"
-        android:text="Down" />
+        android:text="@string/drive" />
 
-    <Button
-        android:id="@+id/turnRight"
+    <TextView
+        android:id="@+id/statusText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="119dp"
-        android:layout_marginRight="32dp"
-        android:text="Right" />
+        android:layout_below="@+id/connectButton"
+        android:layout_centerHorizontal="true"
+        android:text="@string/notconnected"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
-        android:id="@+id/driveFwd"
+        android:id="@+id/baseLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/turnLeft"
-        android:layout_toLeftOf="@+id/turnRight"
-        android:text="Up" />
+        android:layout_alignLeft="@+id/elbowLeft"
+        android:layout_below="@+id/armUp"
+        android:text="@string/left" />
+
+    <Button
+        android:id="@+id/armUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/driveFwd"
+        android:layout_alignBottom="@+id/driveFwd"
+        android:layout_toRightOf="@+id/baseLeft"
+        android:text="@string/up" />
+
+    <Button
+        android:id="@+id/baseRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/baseLeft"
+        android:layout_alignBottom="@+id/baseLeft"
+        android:layout_toRightOf="@+id/armUp"
+        android:text="@string/right" />
+
+    <Button
+        android:id="@+id/armDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/armUp"
+        android:layout_below="@+id/baseLeft"
+        android:text="@string/down" />
+
+    <Button
+        android:id="@+id/wristDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/clawClose"
+        android:layout_alignBottom="@+id/clawClose"
+        android:layout_alignRight="@+id/armUp"
+        android:text="@string/down" />
+
+    <Button
+        android:id="@+id/clawOpen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/wristUp"
+        android:layout_alignBottom="@+id/wristUp"
+        android:layout_toRightOf="@+id/turnLeft"
+        android:text="@string/up" />
+
+    <Button
+        android:id="@+id/rotateRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/rotateLeft"
+        android:layout_alignBottom="@+id/rotateLeft"
+        android:layout_toRightOf="@+id/clawOpen"
+        android:text="@string/right" />
+
+    <Button
+        android:id="@+id/clawClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rotateLeft"
+        android:layout_toLeftOf="@+id/rotateRight"
+        android:text="@string/down" />
 
     <Button
         android:id="@+id/turnLeft"
@@ -78,166 +214,32 @@
         android:layout_alignBaseline="@+id/turnRight"
         android:layout_alignBottom="@+id/turnRight"
         android:layout_toLeftOf="@+id/driveBck"
-        android:text="Left" />
+        android:text="@string/left" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/turnRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button5"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="39dp"
-        android:text="UP" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="110dp"
+        android:layout_marginRight="51dp"
+        android:text="@string/right" />
 
     <Button
-        android:id="@+id/armDown"
+        android:id="@+id/driveBck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/driveBck"
-        android:layout_alignBottom="@+id/driveBck"
-        android:layout_toRightOf="@+id/button8"
-        android:text="Down" />
+        android:layout_alignRight="@+id/driveFwd"
+        android:layout_below="@+id/turnLeft"
+        android:text="@string/back" />
 
     <Button
-        android:id="@+id/armUp"
+        android:id="@+id/driveFwd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/turnLeft"
-        android:layout_alignLeft="@+id/armDown"
-        android:text="Up" />
-
-    <Button
-        android:id="@+id/baseRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/armDown"
-        android:layout_toRightOf="@+id/armDown"
-        android:text="Right" />
-
-    <Button
-        android:id="@+id/baseLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/armDown"
-        android:layout_toLeftOf="@+id/armDown"
-        android:text="Left" />
-
-    <Button
-        android:id="@+id/button14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button7"
-        android:layout_alignBottom="@+id/button7"
-        android:layout_alignLeft="@+id/turnRight"
-        android:text="Right" />
-
-    <Button
-        android:id="@+id/button13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button14"
-        android:layout_toLeftOf="@+id/button14"
-        android:text="Up" />
-
-    <Button
-        android:id="@+id/button15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button13"
-        android:layout_toLeftOf="@+id/button13"
-        android:text="Left" />
-
-    <Button
-        android:id="@+id/button16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button13"
-        android:layout_below="@+id/button14"
-        android:text="Down" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button7"
-        android:layout_alignBottom="@+id/button7"
-        android:layout_toRightOf="@+id/baseRight"
-        android:text="Elbow" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button13"
-        android:layout_alignLeft="@+id/button6"
-        android:text="Wrist" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/driveFwd"
-        android:layout_alignLeft="@+id/driveFwd"
-        android:text="Drive" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/turnLeft"
-        android:layout_alignBottom="@+id/turnLeft"
-        android:layout_toLeftOf="@+id/turnLeft"
-        android:text="Turn" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView4"
-        android:layout_toRightOf="@+id/button15"
-        android:text="Claw" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button15"
-        android:layout_alignBottom="@+id/button15"
-        android:layout_toLeftOf="@+id/button15"
-        android:text="Rotate" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/baseRight"
-        android:layout_alignBottom="@+id/baseRight"
-        android:layout_toRightOf="@+id/baseRight"
-        android:text="Base" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/armUp"
-        android:layout_alignRight="@+id/textView4"
-        android:text="Arm" />
-
-    <TextView
-        android:id="@+id/statusText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="(not connected)"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <Button
-        android:id="@+id/connectButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView7"
-        android:layout_centerHorizontal="true"
-        android:text="Connect" />
+        android:layout_toLeftOf="@+id/turnRight"
+        android:text="@string/forward" />
 
 </RelativeLayout>
