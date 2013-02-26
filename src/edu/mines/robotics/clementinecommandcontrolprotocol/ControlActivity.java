@@ -134,11 +134,13 @@ public class ControlActivity extends Activity {
             	// name of our adapter
                 if (device.getName().equals("BlueClementine-5ACA")) {
                     mmDevice = device;
-                    break;
+                    statusText.setText("Bluetooth Device Found");
+                    return;
+                } else {
+                    statusText.setText(device.getName() + " found instead");
                 }
             }
         }
-        statusText.setText("Bluetooth Device Found");
     }
 	void openBT() throws IOException
     {
@@ -155,13 +157,13 @@ public class ControlActivity extends Activity {
 		public boolean onTouch(View v, MotionEvent event) {
 			try {
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-					// send full speed signal
-					 mmOutputStream.write(0xE2);
+					// send full speed signal to pin 3
+					 mmOutputStream.write(0xE3);
 					 mmOutputStream.write(0x50);
 					 mmOutputStream.write(0x0F);
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
-					// send neutral signal
-					 mmOutputStream.write(0xE2);
+					// send neutral signal to pin 3
+					 mmOutputStream.write(0xE3);
 					 mmOutputStream.write(0x5C);
 					 mmOutputStream.write(0x0B);
 				}
