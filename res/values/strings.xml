@@ -37,6 +37,7 @@
 	<string name="wrist">Wrist</string>
 	<string name="elbow">Elbow</string>
 	<string name="forward">Forward</string>
-	<string name="back">Back</string> 
+	<string name="back">Back</string>
+	<string name="disconnect">Disconnect</string> 
 
 </resources>

@@ -30,7 +30,7 @@ public class ControlActivity extends Activity {
     OutputStream mmOutputStream;
     TextView statusText;
     ArrayList<Button> buttons;
-    Button connectButton;
+    Button connectButton, disconnectButton;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +41,7 @@ public class ControlActivity extends Activity {
 		buttons = new ArrayList<Button>();
 		addButtons();
 		connectButton = (Button) findViewById(R.id.connectButton);
+		disconnectButton = (Button) findViewById(R.id.disconnectButton);
 		statusText = (TextView) findViewById(R.id.statusText);
 		
 		//Connect Button
@@ -49,6 +50,17 @@ public class ControlActivity extends Activity {
                 try {
                 	findBT();
     				openBT();
+                } catch (Exception e) {
+                	Log.e("CCCP", "Failure", e);
+                }
+            }
+        });
+        
+        // Disconnect Button
+        disconnectButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                try {
+                	closeBT();
                 } catch (Exception e) {
                 	Log.e("CCCP", "Failure", e);
                 }
@@ -142,14 +154,20 @@ public class ControlActivity extends Activity {
             }
         }
     }
-	void openBT() throws IOException
-    {
+	
+	void openBT() throws IOException {
         UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb"); //Standard SerialPortService ID
         mmSocket = mmDevice.createRfcommSocketToServiceRecord(uuid);        
         mmSocket.connect();
         mmOutputStream = mmSocket.getOutputStream();
         
         statusText.setText("Bluetooth Opened");
+    }
+	
+	void closeBT() throws IOException {
+        mmOutputStream.close();
+        mmSocket.close();
+        statusText.setText("Bluetooth Closed");
     }
 
 	private OnTouchListener listener = new OnTouchListener() {
