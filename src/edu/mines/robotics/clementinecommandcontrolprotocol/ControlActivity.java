@@ -1,10 +1,16 @@
 package edu.mines.robotics.clementinecommandcontrolprotocol;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Set;
+import java.util.UUID;
+
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -20,6 +26,8 @@ public class ControlActivity extends Activity {
 
     BluetoothAdapter mBluetoothAdapter;
     BluetoothDevice mmDevice;
+    BluetoothSocket mmSocket;
+    OutputStream mmOutputStream;
     TextView statusText;
     ArrayList<Button> buttons;
     Button connectButton;
@@ -40,7 +48,7 @@ public class ControlActivity extends Activity {
             public void onClick(View v) {
                 try {
                 	findBT();
-    				//openBT();
+    				openBT();
                 } catch (Exception e) {
                 	Log.e("CCCP", "Failure", e);
                 }
@@ -132,14 +140,33 @@ public class ControlActivity extends Activity {
         }
         statusText.setText("Bluetooth Device Found");
     }
+	void openBT() throws IOException
+    {
+        UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb"); //Standard SerialPortService ID
+        mmSocket = mmDevice.createRfcommSocketToServiceRecord(uuid);        
+        mmSocket.connect();
+        mmOutputStream = mmSocket.getOutputStream();
+        
+        statusText.setText("Bluetooth Opened");
+    }
 
 	private OnTouchListener listener = new OnTouchListener() {
 		@Override
 		public boolean onTouch(View v, MotionEvent event) {
-			if (event.getAction() == MotionEvent.ACTION_DOWN) {
-				// send full speed signal
-			} else if (event.getAction() == MotionEvent.ACTION_UP) {
-				// send neutral signal
+			try {
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+					// send full speed signal
+					 mmOutputStream.write(0xE2);
+					 mmOutputStream.write(0x50);
+					 mmOutputStream.write(0x0F);
+				} else if (event.getAction() == MotionEvent.ACTION_UP) {
+					// send neutral signal
+					 mmOutputStream.write(0xE2);
+					 mmOutputStream.write(0x5C);
+					 mmOutputStream.write(0x0B);
+				}
+			} catch (IOException e) {
+				// oh no!
 			}
 			return false;
 		}
