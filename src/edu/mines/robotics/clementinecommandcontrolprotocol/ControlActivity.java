@@ -92,21 +92,21 @@ public class ControlActivity extends Activity {
 		byte rev2 = (byte) 0x07;
 		
 		buttonHash.append(R.id.driveFwd, new byte[] {pin2, fwd1, fwd2});
-		buttonHash.append(R.id.driveBck, new byte[] {pin2, fwd1, fwd2});
-		buttonHash.append(R.id.baseLeft, new byte[] {pin2, fwd1, fwd2});
-		buttonHash.append(R.id.baseRight, new byte[] {pin2, fwd1, fwd2});
-		buttonHash.append(R.id.armUp, new byte[] {pin2, fwd1, fwd2});
-		buttonHash.append(R.id.armDown, new byte[] {pin2, fwd1, fwd2});
-		buttonHash.append(R.id.turnRight, new byte[] {pin2, fwd1, fwd2});
-		buttonHash.append(R.id.turnLeft, new byte[] {pin2, fwd1, fwd2});
-		buttonHash.append(R.id.wristUp, new byte[] {pin2, fwd1, fwd2});
-		buttonHash.append(R.id.wristDown, new byte[] {pin2, fwd1, fwd2});
-		buttonHash.append(R.id.elbowLeft, new byte[] {pin2, fwd1, fwd2});
-		buttonHash.append(R.id.elbowRight, new byte[] {pin2, fwd1, fwd2});
-		buttonHash.append(R.id.clawOpen, new byte[] {pin2, fwd1, fwd2});
-		buttonHash.append(R.id.clawClose, new byte[] {pin2, fwd1, fwd2});
-		buttonHash.append(R.id.rotateLeft, new byte[] {pin2, fwd1, fwd2});
-		buttonHash.append(R.id.rotateRight, new byte[] {pin2, fwd1, fwd2});
+		buttonHash.append(R.id.driveBck, new byte[] {pin2, rev1, rev2});
+		buttonHash.append(R.id.baseLeft, new byte[] {pin3, fwd1, fwd2});
+		buttonHash.append(R.id.baseRight, new byte[] {pin3, rev1, rev2});
+		buttonHash.append(R.id.armUp, new byte[] {pin4, fwd1, fwd2});
+		buttonHash.append(R.id.armDown, new byte[] {pin4, rev1, rev2});
+		buttonHash.append(R.id.turnRight, new byte[] {pin5, rev1, rev2});
+		buttonHash.append(R.id.turnLeft, new byte[] {pin5, fwd1, fwd2});
+		buttonHash.append(R.id.wristUp, new byte[] {pin6, fwd1, fwd2});
+		buttonHash.append(R.id.wristDown, new byte[] {pin6, rev1, rev2});
+		buttonHash.append(R.id.elbowLeft, new byte[] {pin7, fwd1, fwd2});
+		buttonHash.append(R.id.elbowRight, new byte[] {pin7, rev1, rev2});
+		buttonHash.append(R.id.clawOpen, new byte[] {pin8, fwd1, fwd2});
+		buttonHash.append(R.id.clawClose, new byte[] {pin8, rev1, rev2});
+		buttonHash.append(R.id.rotateLeft, new byte[] {pin9, fwd1, fwd2});
+		buttonHash.append(R.id.rotateRight, new byte[] {pin9, rev1, rev2});
 		
 	}
 	
