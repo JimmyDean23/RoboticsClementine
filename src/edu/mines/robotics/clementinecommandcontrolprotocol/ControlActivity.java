@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Set;
 import java.util.UUID;
 
@@ -15,6 +16,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
@@ -31,6 +33,7 @@ public class ControlActivity extends Activity {
     TextView statusText;
     ArrayList<Button> buttons;
     Button connectButton, disconnectButton;
+    SparseArray<byte[]> buttonHash;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,7 @@ public class ControlActivity extends Activity {
 		setContentView(R.layout.activity_control);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		
+		createHash();
 		buttons = new ArrayList<Button>();
 		addButtons();
 		connectButton = (Button) findViewById(R.id.connectButton);
@@ -67,6 +71,43 @@ public class ControlActivity extends Activity {
             }
         });
         
+	}
+	//send 0xE2 0x68 0x07 to set reverse, 0xE2 0x5C 0x0B for neutral, 0xE2 0x50 0x0F for forward.
+	private void createHash() {
+		buttonHash = new SparseArray<byte[]>();
+		byte pin2 = (byte) 0xE2;
+		byte pin3 = (byte) 0xE3;
+		byte pin4 = (byte) 0xE4;
+		byte pin5 = (byte) 0xE5;
+		byte pin6 = (byte) 0xE6;
+		byte pin7 = (byte) 0xE7;
+		byte pin8 = (byte) 0xE8;
+		byte pin9 = (byte) 0xE9;
+		byte pin10 = (byte) 0xEA;
+		byte pin11 = (byte) 0xEB;
+		byte pin12 = (byte) 0xEC;
+		byte fwd1 = (byte) 0x50;
+		byte fwd2 = (byte) 0x0F;
+		byte rev1 = (byte) 0x68;
+		byte rev2 = (byte) 0x07;
+		
+		buttonHash.append(R.id.driveFwd, new byte[] {pin2, fwd1, fwd2});
+		buttonHash.append(R.id.driveBck, new byte[] {pin2, fwd1, fwd2});
+		buttonHash.append(R.id.baseLeft, new byte[] {pin2, fwd1, fwd2});
+		buttonHash.append(R.id.baseRight, new byte[] {pin2, fwd1, fwd2});
+		buttonHash.append(R.id.armUp, new byte[] {pin2, fwd1, fwd2});
+		buttonHash.append(R.id.armDown, new byte[] {pin2, fwd1, fwd2});
+		buttonHash.append(R.id.turnRight, new byte[] {pin2, fwd1, fwd2});
+		buttonHash.append(R.id.turnLeft, new byte[] {pin2, fwd1, fwd2});
+		buttonHash.append(R.id.wristUp, new byte[] {pin2, fwd1, fwd2});
+		buttonHash.append(R.id.wristDown, new byte[] {pin2, fwd1, fwd2});
+		buttonHash.append(R.id.elbowLeft, new byte[] {pin2, fwd1, fwd2});
+		buttonHash.append(R.id.elbowRight, new byte[] {pin2, fwd1, fwd2});
+		buttonHash.append(R.id.clawOpen, new byte[] {pin2, fwd1, fwd2});
+		buttonHash.append(R.id.clawClose, new byte[] {pin2, fwd1, fwd2});
+		buttonHash.append(R.id.rotateLeft, new byte[] {pin2, fwd1, fwd2});
+		buttonHash.append(R.id.rotateRight, new byte[] {pin2, fwd1, fwd2});
+		
 	}
 	
 	// add buttons to array with touch listeners
@@ -167,24 +208,37 @@ public class ControlActivity extends Activity {
 	void closeBT() throws IOException {
         mmOutputStream.close();
         mmSocket.close();
+        
         statusText.setText("Bluetooth Closed");
     }
+	
+	private byte[] getByteArray(int viewId, boolean released) {
+		byte[] byteArray = buttonHash.get(viewId);
+		byte neutral1 = (byte) 0x5C;
+		byte neutral2 = (byte) 0x0B;
+		if (released) {
+			byteArray[1] = neutral1;
+			byteArray[2] = neutral2;
+		}
+		return byteArray;
+	}
 
 	private OnTouchListener listener = new OnTouchListener() {
 		@Override
 		public boolean onTouch(View v, MotionEvent event) {
 			try {
-				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-					// send full speed signal to pin 3
-					 mmOutputStream.write(0xE3);
-					 mmOutputStream.write(0x50);
-					 mmOutputStream.write(0x0F);
-				} else if (event.getAction() == MotionEvent.ACTION_UP) {
-					// send neutral signal to pin 3
-					 mmOutputStream.write(0xE3);
-					 mmOutputStream.write(0x5C);
-					 mmOutputStream.write(0x0B);
+				if (null == mmOutputStream) {
+					throw new NullPointerException();
 				}
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+					// send full speed signal to pin
+					mmOutputStream.write(getByteArray(v.getId(), false));
+				} else if (event.getAction() == MotionEvent.ACTION_UP) {
+					// send neutral signal to pin 
+					mmOutputStream.write(getByteArray(v.getId(), true));
+				}
+			} catch (NullPointerException e) {
+				statusText.setText("No device connected");
 			} catch (IOException e) {
 				// oh no!
 			}
