@@ -30,10 +30,11 @@ public class ControlActivity extends Activity {
     BluetoothDevice mmDevice;
     BluetoothSocket mmSocket;
     OutputStream mmOutputStream;
-    TextView statusText;
+    TextView statusText, outputText;
     ArrayList<Button> buttons;
     Button connectButton, disconnectButton;
     SparseArray<byte[]> buttonHash;
+    byte[] test = {(byte) 0xE9, (byte) 0x68, (byte) 0x07};
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,7 @@ public class ControlActivity extends Activity {
 		connectButton = (Button) findViewById(R.id.connectButton);
 		disconnectButton = (Button) findViewById(R.id.disconnectButton);
 		statusText = (TextView) findViewById(R.id.statusText);
+		outputText = (TextView) findViewById(R.id.output);
 		
 		//Connect Button
         connectButton.setOnClickListener(new View.OnClickListener() {
@@ -225,16 +227,18 @@ public class ControlActivity extends Activity {
 
 	private OnTouchListener listener = new OnTouchListener() {
 		@Override
-		public boolean onTouch(View v, MotionEvent event) {
+		synchronized public boolean onTouch(View v, MotionEvent event) {
 			try {
 				if (null == mmOutputStream) {
 					throw new NullPointerException();
 				}
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					// send full speed signal to pin
+					mmOutputStream.write(test);
+					outputText.setText(test.toString());
 					mmOutputStream.write(getByteArray(v.getId(), false));
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
-					// send neutral signal to pin 
+					// send neutral signal to pin
 					mmOutputStream.write(getByteArray(v.getId(), true));
 				}
 			} catch (NullPointerException e) {

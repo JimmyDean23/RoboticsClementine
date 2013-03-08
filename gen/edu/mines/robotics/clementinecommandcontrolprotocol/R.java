@@ -32,7 +32,8 @@ public final class R {
         public static final int elbowText=0x7f070006;
         public static final int handLeft=0x7f070004;
         public static final int handRight=0x7f070017;
-        public static final int menu_settings=0x7f07001b;
+        public static final int menu_settings=0x7f07001c;
+        public static final int output=0x7f07001b;
         public static final int rotateText=0x7f07000b;
         public static final int shoulderDown=0x7f070015;
         public static final int shoulderUp=0x7f07000f;
