@@ -29,10 +29,10 @@
 	<string name="notconnected">(not connected)</string>
 	<string name="connect">Connect</string>
 	<string name="base">Base</string>
-	<string name="arm">Arm</string>
-	<string name="rotate">Rotate</string>
+	<string name="shoulder">Shoulder</string>
+	<string name="hand">Hand</string>
 	<string name="claw">Claw</string>
-	<string name="turn">Turn</string>
+	<string name="steer">Steer</string>
 	<string name="drive">Drive</string>
 	<string name="wrist">Wrist</string>
 	<string name="elbow">Elbow</string>

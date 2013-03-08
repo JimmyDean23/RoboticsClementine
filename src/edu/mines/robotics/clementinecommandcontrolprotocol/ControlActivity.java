@@ -95,18 +95,18 @@ public class ControlActivity extends Activity {
 		buttonHash.append(R.id.driveBck, new byte[] {pin2, rev1, rev2});
 		buttonHash.append(R.id.baseLeft, new byte[] {pin3, fwd1, fwd2});
 		buttonHash.append(R.id.baseRight, new byte[] {pin3, rev1, rev2});
-		buttonHash.append(R.id.armUp, new byte[] {pin4, fwd1, fwd2});
-		buttonHash.append(R.id.armDown, new byte[] {pin4, rev1, rev2});
-		buttonHash.append(R.id.turnRight, new byte[] {pin5, rev1, rev2});
-		buttonHash.append(R.id.turnLeft, new byte[] {pin5, fwd1, fwd2});
+		buttonHash.append(R.id.shoulderUp, new byte[] {pin4, fwd1, fwd2});
+		buttonHash.append(R.id.shoulderDown, new byte[] {pin4, rev1, rev2});
+		buttonHash.append(R.id.steerLeft, new byte[] {pin5, fwd1, fwd2});
+		buttonHash.append(R.id.steerRight, new byte[] {pin5, rev1, rev2});
 		buttonHash.append(R.id.wristUp, new byte[] {pin6, fwd1, fwd2});
 		buttonHash.append(R.id.wristDown, new byte[] {pin6, rev1, rev2});
 		buttonHash.append(R.id.elbowLeft, new byte[] {pin7, fwd1, fwd2});
 		buttonHash.append(R.id.elbowRight, new byte[] {pin7, rev1, rev2});
 		buttonHash.append(R.id.clawOpen, new byte[] {pin8, fwd1, fwd2});
 		buttonHash.append(R.id.clawClose, new byte[] {pin8, rev1, rev2});
-		buttonHash.append(R.id.rotateLeft, new byte[] {pin9, fwd1, fwd2});
-		buttonHash.append(R.id.rotateRight, new byte[] {pin9, rev1, rev2});
+		buttonHash.append(R.id.handLeft, new byte[] {pin9, fwd1, fwd2});
+		buttonHash.append(R.id.handRight, new byte[] {pin9, rev1, rev2});
 		
 	}
 	
@@ -116,35 +116,35 @@ public class ControlActivity extends Activity {
 		Button driveBck = (Button) findViewById(R.id.driveBck);
 		Button baseLeft = (Button) findViewById(R.id.baseLeft);
 		Button baseRight = (Button) findViewById(R.id.baseRight);
-		Button armUp = (Button) findViewById(R.id.armUp);
-		Button armDown = (Button) findViewById(R.id.armDown);
-		Button turnRight = (Button) findViewById(R.id.turnRight);
-		Button turnLeft = (Button) findViewById(R.id.turnLeft);
+		Button shoulderUp = (Button) findViewById(R.id.shoulderUp);
+		Button shoulderDown = (Button) findViewById(R.id.shoulderDown);
+		Button steerRight = (Button) findViewById(R.id.steerRight);
+		Button steerLeft = (Button) findViewById(R.id.steerLeft);
 		Button wristUp = (Button) findViewById(R.id.wristUp);
 		Button wristDown = (Button) findViewById(R.id.wristDown);
 		Button elbowLeft = (Button) findViewById(R.id.elbowLeft);
 		Button elbowRight = (Button) findViewById(R.id.elbowRight);
 		Button clawOpen = (Button) findViewById(R.id.clawOpen);
 		Button clawClose = (Button) findViewById(R.id.clawClose);
-		Button rotateLeft = (Button) findViewById(R.id.rotateLeft);
-		Button rotateRight = (Button) findViewById(R.id.rotateRight);
+		Button handLeft = (Button) findViewById(R.id.handLeft);
+		Button handRight = (Button) findViewById(R.id.handRight);
 		
 		buttons.add(driveFwd);
 		buttons.add(driveBck);
 		buttons.add(baseLeft);
 		buttons.add(baseRight);
-		buttons.add(armUp);
-		buttons.add(armDown);
-		buttons.add(turnRight);
-		buttons.add(turnLeft);
+		buttons.add(shoulderUp);
+		buttons.add(shoulderDown);
+		buttons.add(steerRight);
+		buttons.add(steerLeft);
 		buttons.add(wristUp);
 		buttons.add(wristDown);
 		buttons.add(elbowLeft);
 		buttons.add(elbowRight);
 		buttons.add(clawOpen);
 		buttons.add(clawClose);
-		buttons.add(rotateLeft);
-		buttons.add(rotateRight);
+		buttons.add(handLeft);
+		buttons.add(handRight);
 		
 		// add touch listeners
 		for (int i = 0; i < buttons.size(); i++) {

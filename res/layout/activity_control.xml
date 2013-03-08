@@ -47,7 +47,7 @@
         android:text="@string/up" />
 
     <Button
-        android:id="@+id/rotateLeft"
+        android:id="@+id/handLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/clawOpen"
@@ -75,19 +75,19 @@
         android:id="@+id/turnText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/turnLeft"
-        android:layout_alignBottom="@+id/turnLeft"
-        android:layout_toLeftOf="@+id/turnLeft"
-        android:text="@string/turn" />
+        android:layout_alignBaseline="@+id/steerLeft"
+        android:layout_alignBottom="@+id/steerLeft"
+        android:layout_toLeftOf="@+id/steerLeft"
+        android:text="@string/steer" />
 
     <TextView
         android:id="@+id/rotateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/rotateLeft"
-        android:layout_alignBottom="@+id/rotateLeft"
-        android:layout_toLeftOf="@+id/rotateLeft"
-        android:text="@string/rotate" />
+        android:layout_alignBaseline="@+id/handLeft"
+        android:layout_alignBottom="@+id/handLeft"
+        android:layout_toLeftOf="@+id/handLeft"
+        android:text="@string/hand" />
 
     <TextView
         android:id="@+id/baseText"
@@ -109,16 +109,16 @@
         android:id="@+id/armText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/armUp"
+        android:layout_above="@+id/shoulderUp"
         android:layout_alignRight="@+id/wristText"
-        android:text="@string/arm" />
+        android:text="@string/shoulder" />
 
     <TextView
         android:id="@+id/clawText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/clawOpen"
-        android:layout_toRightOf="@+id/rotateLeft"
+        android:layout_toRightOf="@+id/handLeft"
         android:text="@string/claw" />
 
     <TextView
@@ -143,11 +143,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/elbowLeft"
-        android:layout_below="@+id/armUp"
+        android:layout_below="@+id/shoulderUp"
         android:text="@string/left" />
 
     <Button
-        android:id="@+id/armUp"
+        android:id="@+id/shoulderUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/driveFwd"
@@ -161,14 +161,14 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/baseLeft"
         android:layout_alignBottom="@+id/baseLeft"
-        android:layout_toRightOf="@+id/armUp"
+        android:layout_toRightOf="@+id/shoulderUp"
         android:text="@string/right" />
 
     <Button
-        android:id="@+id/armDown"
+        android:id="@+id/shoulderDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/armUp"
+        android:layout_alignRight="@+id/shoulderUp"
         android:layout_below="@+id/baseLeft"
         android:text="@string/down" />
 
@@ -178,7 +178,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/clawClose"
         android:layout_alignBottom="@+id/clawClose"
-        android:layout_alignRight="@+id/armUp"
+        android:layout_alignRight="@+id/shoulderUp"
         android:text="@string/down" />
 
     <Button
@@ -187,15 +187,15 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/wristUp"
         android:layout_alignBottom="@+id/wristUp"
-        android:layout_toRightOf="@+id/turnLeft"
+        android:layout_toRightOf="@+id/steerLeft"
         android:text="@string/up" />
 
     <Button
-        android:id="@+id/rotateRight"
+        android:id="@+id/handRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/rotateLeft"
-        android:layout_alignBottom="@+id/rotateLeft"
+        android:layout_alignBaseline="@+id/handLeft"
+        android:layout_alignBottom="@+id/handLeft"
         android:layout_toRightOf="@+id/clawOpen"
         android:text="@string/right" />
 
@@ -203,21 +203,21 @@
         android:id="@+id/clawClose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rotateLeft"
-        android:layout_toLeftOf="@+id/rotateRight"
+        android:layout_below="@+id/handLeft"
+        android:layout_toLeftOf="@+id/handRight"
         android:text="@string/down" />
 
     <Button
-        android:id="@+id/turnLeft"
+        android:id="@+id/steerLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/turnRight"
-        android:layout_alignBottom="@+id/turnRight"
+        android:layout_alignBaseline="@+id/steerRight"
+        android:layout_alignBottom="@+id/steerRight"
         android:layout_toLeftOf="@+id/driveBck"
         android:text="@string/left" />
 
     <Button
-        android:id="@+id/turnRight"
+        android:id="@+id/steerRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -231,15 +231,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/driveFwd"
-        android:layout_below="@+id/turnLeft"
+        android:layout_below="@+id/steerLeft"
         android:text="@string/back" />
 
     <Button
         android:id="@+id/driveFwd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/turnLeft"
-        android:layout_toLeftOf="@+id/turnRight"
+        android:layout_above="@+id/steerLeft"
+        android:layout_toLeftOf="@+id/steerRight"
         android:text="@string/forward" />
 
     <Button

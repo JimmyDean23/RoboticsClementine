@@ -15,9 +15,7 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int armDown=0x7f070015;
         public static final int armText=0x7f07000e;
-        public static final int armUp=0x7f07000f;
         public static final int baseLeft=0x7f070014;
         public static final int baseRight=0x7f070007;
         public static final int baseText=0x7f07000c;
@@ -32,13 +30,15 @@ public final class R {
         public static final int elbowLeft=0x7f070002;
         public static final int elbowRight=0x7f070000;
         public static final int elbowText=0x7f070006;
+        public static final int handLeft=0x7f070004;
+        public static final int handRight=0x7f070017;
         public static final int menu_settings=0x7f07001b;
-        public static final int rotateLeft=0x7f070004;
-        public static final int rotateRight=0x7f070017;
         public static final int rotateText=0x7f07000b;
+        public static final int shoulderDown=0x7f070015;
+        public static final int shoulderUp=0x7f07000f;
         public static final int statusText=0x7f070013;
-        public static final int turnLeft=0x7f07000a;
-        public static final int turnRight=0x7f070018;
+        public static final int steerLeft=0x7f07000a;
+        public static final int steerRight=0x7f070018;
         public static final int turnText=0x7f070009;
         public static final int wristDown=0x7f070003;
         public static final int wristText=0x7f070008;
@@ -52,7 +52,6 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f040000;
-        public static final int arm=0x7f040019;
         public static final int back=0x7f040021;
         public static final int base=0x7f040018;
         public static final int bt_not_enabled_leaving=0x7f040004;
@@ -65,6 +64,7 @@ public final class R {
         public static final int drive=0x7f04001d;
         public static final int elbow=0x7f04001f;
         public static final int forward=0x7f040020;
+        public static final int hand=0x7f04001a;
         public static final int insecure_connect=0x7f040010;
         public static final int left=0x7f040015;
         public static final int menu_settings=0x7f040001;
@@ -73,7 +73,6 @@ public final class R {
         public static final int not_connected=0x7f040003;
         public static final int notconnected=0x7f040016;
         public static final int right=0x7f040012;
-        public static final int rotate=0x7f04001a;
         /**    DeviceListActivity 
          */
         public static final int scanning=0x7f040008;
@@ -84,12 +83,13 @@ public final class R {
         /**    BluetoothChat 
          */
         public static final int send=0x7f040002;
+        public static final int shoulder=0x7f040019;
+        public static final int steer=0x7f04001c;
         public static final int title_connected_to=0x7f040006;
         public static final int title_connecting=0x7f040005;
         public static final int title_not_connected=0x7f040007;
         public static final int title_other_devices=0x7f04000d;
         public static final int title_paired_devices=0x7f04000c;
-        public static final int turn=0x7f04001c;
         public static final int up=0x7f040013;
         public static final int wrist=0x7f04001e;
     }
