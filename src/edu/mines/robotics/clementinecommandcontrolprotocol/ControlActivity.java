@@ -1,13 +1,10 @@
 package edu.mines.robotics.clementinecommandcontrolprotocol;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Set;
 import java.util.UUID;
-
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -34,7 +31,6 @@ public class ControlActivity extends Activity {
     ArrayList<Button> buttons;
     Button connectButton, disconnectButton;
     SparseArray<byte[]> buttonHash;
-    byte[] test = {(byte) 0xE9, (byte) 0x68, (byte) 0x07};
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +44,6 @@ public class ControlActivity extends Activity {
 		connectButton = (Button) findViewById(R.id.connectButton);
 		disconnectButton = (Button) findViewById(R.id.disconnectButton);
 		statusText = (TextView) findViewById(R.id.statusText);
-		outputText = (TextView) findViewById(R.id.output);
 		
 		//Connect Button
         connectButton.setOnClickListener(new View.OnClickListener() {
@@ -85,9 +80,9 @@ public class ControlActivity extends Activity {
 		byte pin7 = (byte) 0xE7;
 		byte pin8 = (byte) 0xE8;
 		byte pin9 = (byte) 0xE9;
-		byte pin10 = (byte) 0xEA;
-		byte pin11 = (byte) 0xEB;
-		byte pin12 = (byte) 0xEC;
+		//byte pin10 = (byte) 0xEA;
+		//byte pin11 = (byte) 0xEB;
+		//byte pin12 = (byte) 0xEC;
 		byte fwd1 = (byte) 0x50;
 		byte fwd2 = (byte) 0x0F;
 		byte rev1 = (byte) 0x68;
@@ -208,9 +203,10 @@ public class ControlActivity extends Activity {
     }
 	
 	void closeBT() throws IOException {
-        mmOutputStream.close();
-        mmSocket.close();
-        
+		if (null != mmOutputStream) {
+			mmOutputStream.close();
+			mmSocket.close();
+		}
         statusText.setText("Bluetooth Closed");
     }
 	
@@ -234,8 +230,6 @@ public class ControlActivity extends Activity {
 				}
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					// send full speed signal to pin
-					mmOutputStream.write(test);
-					outputText.setText(test.toString());
 					mmOutputStream.write(getByteArray(v.getId(), false));
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
 					// send neutral signal to pin

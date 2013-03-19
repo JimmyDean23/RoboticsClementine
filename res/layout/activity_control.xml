@@ -1,261 +1,315 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2009 The Android Open Source Project
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-
-          http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:columnCount="4"
     tools:context=".ControlActivity" >
 
-    <Button
-        android:id="@+id/elbowRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/wristUp"
-        android:layout_toRightOf="@+id/wristUp"
-        android:text="@string/right" />
+    <GridLayout
+        android:layout_width="400dp"
+        android:layout_height="235dp"
+        android:layout_column="0"
+        android:layout_gravity="left|top"
+        android:layout_row="0" >
 
-    <Button
-        android:id="@+id/elbowLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/wristUp"
-        android:layout_marginLeft="22dp"
-        android:text="@string/left" />
+        <TextView
+            android:id="@+id/wristText"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_column="2"
+            android:layout_row="0"
+            android:text="@string/wrist" />
 
-    <Button
-        android:id="@+id/wristUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/wristDown"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="39dp"
-        android:text="@string/up" />
+        <TextView
+            android:id="@+id/elbowText"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_column="0"
+            android:layout_row="2"
+            android:text="@string/elbow" />
 
-    <Button
-        android:id="@+id/handLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/clawOpen"
-        android:layout_toLeftOf="@+id/clawOpen"
-        android:text="@string/left" />
+        <Button
+            android:id="@+id/elbowLeft"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:layout_column="1"
+            android:layout_row="2"
+            android:gravity="left|center_vertical"
+            android:text="@string/left" />
 
-    <TextView
-        android:id="@+id/elbowText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/elbowRight"
-        android:layout_alignBottom="@+id/elbowRight"
-        android:layout_toRightOf="@+id/baseRight"
-        android:text="@string/elbow" />
+        <Button
+            android:id="@+id/elbowRight"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:layout_column="3"
+            android:layout_row="2"
+            android:gravity="left|center_vertical"
+            android:text="@string/right" />
 
-    <TextView
-        android:id="@+id/wristText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/clawOpen"
-        android:layout_alignLeft="@+id/wristUp"
-        android:text="@string/wrist" />
+        <Button
+            android:id="@+id/wristDown"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:layout_column="2"
+            android:layout_row="3"
+            android:gravity="left|center_vertical"
+            android:text="@string/down" />
 
-    <TextView
-        android:id="@+id/turnText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/steerLeft"
-        android:layout_alignBottom="@+id/steerLeft"
-        android:layout_toLeftOf="@+id/steerLeft"
-        android:text="@string/steer" />
+        <Button
+            android:id="@+id/wristUp"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:layout_column="2"
+            android:layout_row="1"
+            android:gravity="left|center_vertical"
+            android:text="@string/up" />
+    </GridLayout>
 
-    <TextView
-        android:id="@+id/rotateText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/handLeft"
-        android:layout_alignBottom="@+id/handLeft"
-        android:layout_toLeftOf="@+id/handLeft"
-        android:text="@string/hand" />
+    <GridLayout
+        android:layout_width="400dp"
+        android:layout_height="235dp"
+        android:layout_column="0"
+        android:layout_row="1"
+        android:layout_rowSpan="3" >
 
-    <TextView
-        android:id="@+id/baseText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/baseRight"
-        android:layout_alignBottom="@+id/baseRight"
-        android:layout_toRightOf="@+id/baseRight"
-        android:text="@string/base" />
+        <TextView
+            android:id="@+id/driveText"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_column="2"
+            android:layout_row="0"
+            android:text="@string/drive" />
 
-    <Button
-        android:id="@+id/connectButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="@string/connect" />
+        <TextView
+            android:id="@+id/turnText"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_column="0"
+            android:layout_row="2"
+            android:text="@string/steer" />
 
-    <TextView
-        android:id="@+id/armText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/shoulderUp"
-        android:layout_alignRight="@+id/wristText"
-        android:text="@string/shoulder" />
+        <Button
+            android:id="@+id/steerLeft"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:layout_column="1"
+            android:layout_row="2"
+            android:gravity="left|center_vertical"
+            android:text="@string/left" />
 
-    <TextView
-        android:id="@+id/clawText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/clawOpen"
-        android:layout_toRightOf="@+id/handLeft"
-        android:text="@string/claw" />
+        <Button
+            android:id="@+id/steerRight"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:layout_column="3"
+            android:layout_row="2"
+            android:gravity="left|center_vertical"
+            android:text="@string/right" />
 
-    <TextView
-        android:id="@+id/driveText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/driveFwd"
-        android:layout_alignLeft="@+id/driveFwd"
-        android:text="@string/drive" />
+        <Button
+            android:id="@+id/driveBck"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:layout_column="2"
+            android:layout_row="3"
+            android:gravity="left|center_vertical"
+            android:text="@string/back" />
 
-    <TextView
-        android:id="@+id/statusText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/connectButton"
-        android:layout_centerHorizontal="true"
-        android:text="@string/notconnected"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        <Button
+            android:id="@+id/driveFwd"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:layout_column="2"
+            android:layout_row="1"
+            android:gravity="left|center_vertical"
+            android:text="@string/forward" />
+    </GridLayout>
 
-    <Button
-        android:id="@+id/baseLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/elbowLeft"
-        android:layout_below="@+id/shoulderUp"
-        android:text="@string/left" />
+    <LinearLayout
+        android:layout_width="160dp"
+        android:layout_height="112dp"
+        android:layout_column="1"
+        android:layout_columnSpan="2"
+        android:layout_row="0"
+        android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/shoulderUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/driveFwd"
-        android:layout_alignBottom="@+id/driveFwd"
-        android:layout_toRightOf="@+id/baseLeft"
-        android:text="@string/up" />
+        <Button
+            android:id="@+id/connectButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="45dp"
+            android:text="@string/connect" />
 
-    <Button
-        android:id="@+id/baseRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/baseLeft"
-        android:layout_alignBottom="@+id/baseLeft"
-        android:layout_toRightOf="@+id/shoulderUp"
-        android:text="@string/right" />
+        <TextView
+            android:id="@+id/statusText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/notconnected"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+        
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/shoulderDown"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/shoulderUp"
-        android:layout_below="@+id/baseLeft"
-        android:text="@string/down" />
+    <GridLayout
+        android:layout_width="400dp"
+        android:layout_height="235dp"
+        android:layout_column="3"
+        android:layout_gravity="right|top"
+        android:layout_row="0" >
 
-    <Button
-        android:id="@+id/wristDown"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/clawClose"
-        android:layout_alignBottom="@+id/clawClose"
-        android:layout_alignRight="@+id/shoulderUp"
-        android:text="@string/down" />
+        <TextView
+            android:id="@+id/clawText"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_column="2"
+            android:layout_row="0"
+            android:text="@string/claw" />
 
-    <Button
-        android:id="@+id/clawOpen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/wristUp"
-        android:layout_alignBottom="@+id/wristUp"
-        android:layout_toRightOf="@+id/steerLeft"
-        android:text="@string/up" />
+        <TextView
+            android:id="@+id/handText"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_column="0"
+            android:layout_row="2"
+            android:text="@string/hand" />
 
-    <Button
-        android:id="@+id/handRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/handLeft"
-        android:layout_alignBottom="@+id/handLeft"
-        android:layout_toRightOf="@+id/clawOpen"
-        android:text="@string/right" />
+        <Button
+            android:id="@+id/handLeft"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:layout_column="1"
+            android:layout_row="2"
+            android:gravity="left|center_vertical"
+            android:text="@string/left" />
 
-    <Button
-        android:id="@+id/clawClose"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/handLeft"
-        android:layout_toLeftOf="@+id/handRight"
-        android:text="@string/down" />
+        <Button
+            android:id="@+id/handRight"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:layout_column="3"
+            android:layout_row="2"
+            android:gravity="left|center_vertical"
+            android:text="@string/right" />
 
-    <Button
-        android:id="@+id/steerLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/steerRight"
-        android:layout_alignBottom="@+id/steerRight"
-        android:layout_toLeftOf="@+id/driveBck"
-        android:text="@string/left" />
+        <Button
+            android:id="@+id/clawClose"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:layout_column="2"
+            android:layout_row="3"
+            android:gravity="left|center_vertical"
+            android:text="@string/close" />
 
-    <Button
-        android:id="@+id/steerRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="110dp"
-        android:layout_marginRight="51dp"
-        android:text="@string/right" />
+        <Button
+            android:id="@+id/clawOpen"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:layout_column="2"
+            android:layout_row="1"
+            android:gravity="left|center_vertical"
+            android:text="@string/open" />
+    </GridLayout>
 
-    <Button
-        android:id="@+id/driveBck"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/driveFwd"
-        android:layout_below="@+id/steerLeft"
-        android:text="@string/back" />
+    <GridLayout
+        android:layout_width="400dp"
+        android:layout_height="235dp"
+        android:layout_column="3"
+        android:layout_gravity="right|top"
+        android:layout_row="1"
+        android:layout_rowSpan="3" >
 
-    <Button
-        android:id="@+id/driveFwd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/steerLeft"
-        android:layout_toLeftOf="@+id/steerRight"
-        android:text="@string/forward" />
+        <TextView
+            android:id="@+id/shoulderText"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_column="2"
+            android:layout_row="0"
+            android:text="@string/shoulder" />
 
-    <Button
-        android:id="@+id/disconnectButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/disconnect" />
+        <TextView
+            android:id="@+id/baseText"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_column="0"
+            android:layout_row="2"
+            android:text="@string/base" />
 
-    <TextView
-        android:id="@+id/output"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="NULL" />
+        <Button
+            android:id="@+id/baseLeft"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:layout_column="1"
+            android:layout_row="2"
+            android:gravity="left|center_vertical"
+            android:text="@string/left" />
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/baseRight"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:layout_column="3"
+            android:layout_row="2"
+            android:gravity="left|center_vertical"
+            android:text="@string/right" />
+
+        <Button
+            android:id="@+id/shoulderDown"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:layout_column="2"
+            android:layout_row="3"
+            android:gravity="left|center_vertical"
+            android:text="@string/down" />
+
+        <Button
+            android:id="@+id/shoulderUp"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:layout_column="2"
+            android:layout_row="1"
+            android:gravity="left|center_vertical"
+            android:text="@string/up" />
+    </GridLayout>
+
+    <LinearLayout
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_column="1"
+        android:layout_columnSpan="2"
+        android:layout_gravity="left"
+        android:layout_row="3" >
+
+        <Button
+            android:id="@+id/disconnectButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="30dp"
+            android:text="@string/disconnect" />
+    </LinearLayout>
+
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="46dp"
+        android:layout_column="0"
+        android:layout_row="1" />
+
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="135dp"
+        android:layout_column="0"
+        android:layout_row="2" />
+
+    <Space
+        android:layout_width="60dp"
+        android:layout_height="1dp"
+        android:layout_column="1"
+        android:layout_row="0" />
+
+    <Space
+        android:layout_width="99dp"
+        android:layout_height="15dp"
+        android:layout_column="2" />
+
+</GridLayout>
