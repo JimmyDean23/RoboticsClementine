@@ -3,6 +3,7 @@ package edu.mines.robotics.clementinecommandcontrolprotocol;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Set;
 import java.util.UUID;
 import android.app.Activity;
@@ -31,44 +32,19 @@ public class ControlActivity extends Activity {
     ArrayList<Button> buttons;
     Button connectButton, disconnectButton;
     SparseArray<byte[]> buttonHash;
-    
+
+	private static final String TAG = "CCCP";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_control);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		
-		createHash();
-		buttons = new ArrayList<Button>();
 		addButtons();
-		connectButton = (Button) findViewById(R.id.connectButton);
-		disconnectButton = (Button) findViewById(R.id.disconnectButton);
-		statusText = (TextView) findViewById(R.id.statusText);
-		
-		//Connect Button
-        connectButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                try {
-                	findBT();
-    				openBT();
-                } catch (Exception e) {
-                	Log.e("CCCP", "Failure", e);
-                }
-            }
-        });
-        
-        // Disconnect Button
-        disconnectButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                try {
-                	closeBT();
-                } catch (Exception e) {
-                	Log.e("CCCP", "Failure", e);
-                }
-            }
-        });
-        
+		createHash();
 	}
+	
 	//send 0xE2 0x68 0x07 to set reverse, 0xE2 0x5C 0x0B for neutral, 0xE2 0x50 0x0F for forward.
 	private void createHash() {
 		buttonHash = new SparseArray<byte[]>();
@@ -104,11 +80,12 @@ public class ControlActivity extends Activity {
 		buttonHash.put(R.id.clawClose, new byte[] {pin8, rev1, rev2});
 		buttonHash.put(R.id.handLeft, new byte[] {pin9, fwd1, fwd2});
 		buttonHash.put(R.id.handRight, new byte[] {pin9, rev1, rev2});
-		
 	}
 	
 	// add buttons to array with touch listeners
 	void addButtons() {		
+		buttons = new ArrayList<Button>();
+		
 		Button driveFwd = (Button) findViewById(R.id.driveFwd);
 		Button driveBck = (Button) findViewById(R.id.driveBck);
 		Button baseLeft = (Button) findViewById(R.id.baseLeft);
@@ -147,25 +124,37 @@ public class ControlActivity extends Activity {
 		for (int i = 0; i < buttons.size(); i++) {
 			buttons.get(i).setOnTouchListener(listener);
 		}
+		
+		// add connect/disconnect buttons and their listeners
+		connectButton = (Button) findViewById(R.id.connectButton);
+		disconnectButton = (Button) findViewById(R.id.disconnectButton);
+		statusText = (TextView) findViewById(R.id.statusText);
+		
+		//Connect Button
+        connectButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                try {
+                	findBT();
+    				openBT();
+                } catch (Exception e) {
+                	Log.e(TAG, "Failure", e);
+                }
+            }
+        });
+        
+        // Disconnect Button
+        disconnectButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                try {
+                	closeBT();
+                } catch (Exception e) {
+                	Log.e(TAG, "Failure", e);
+                }
+            }
+        });
 	}
 	
-	/*
-	 * Status of testing:
-	 * - bluetooth does not work on emulation
-	 * - looking at url below for example Android code
-	 * - Added a button to try to connect. Prereq: device has paired with the bluetooth module (pass = 1234)
-	 * - Button successfully displays "No bluetooth adapter available" in emulation
-	 * 
-	 * TODO
-	 * - check baud requirements - currently Arduino expects 57600, but that can be easily changed.
-	 * - implement openBT(), then send serial bytes.
-	 * - for now, ignore receiving data
-	 * Example commands:
-	 * - send 0xE2 0x68 0x07 to set reverse, 0xE2 0x5C 0x0B for neutral, 0xE2 0x50 0x0F for forward.
-	 * - E2 means pin 2, similarly for other pins (pin 4 is E4, etc).
-	 */
-	// http://bellcode.wordpress.com/2012/01/02/android-and-arduino-bluetooth-communication/
-	
+	// see http://bellcode.wordpress.com/2012/01/02/android-and-arduino-bluetooth-communication/
 	void findBT() {
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mBluetoothAdapter == null) {
@@ -206,12 +195,12 @@ public class ControlActivity extends Activity {
 		if (null != mmOutputStream) {
 			mmOutputStream.close();
 			mmSocket.close();
+			statusText.setText("Bluetooth Closed");
 		}
-        statusText.setText("Bluetooth Closed");
     }
 	
 	private byte[] getByteArray(int viewId, boolean released) {
-		byte[] byteArray = buttonHash.get(viewId);
+		byte[] byteArray = buttonHash.get(viewId).clone(); // make a copy since we change it
 		byte neutral1 = (byte) 0x5C;
 		byte neutral2 = (byte) 0x0B;
 		if (released) {
@@ -223,7 +212,7 @@ public class ControlActivity extends Activity {
 
 	private OnTouchListener listener = new OnTouchListener() {
 		@Override
-		synchronized public boolean onTouch(View v, MotionEvent event) {
+		public boolean onTouch(View v, MotionEvent event) {
 			try {
 				if (null == mmOutputStream) {
 					throw new NullPointerException();
@@ -238,7 +227,8 @@ public class ControlActivity extends Activity {
 			} catch (NullPointerException e) {
 				statusText.setText("No device connected");
 			} catch (IOException e) {
-				// oh no!
+				statusText.setText("IO error");
+				e.printStackTrace();
 			}
 			return false;
 		}
