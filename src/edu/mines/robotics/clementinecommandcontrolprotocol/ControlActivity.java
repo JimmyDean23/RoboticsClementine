@@ -66,20 +66,20 @@ public class ControlActivity extends Activity {
 		
 		buttonHash.put(R.id.driveFwd, new byte[] {pin2, fwd1, fwd2});
 		buttonHash.put(R.id.driveBck, new byte[] {pin2, rev1, rev2});
-		buttonHash.put(R.id.baseLeft, new byte[] {pin3, fwd1, fwd2});
-		buttonHash.put(R.id.baseRight, new byte[] {pin3, rev1, rev2});
-		buttonHash.put(R.id.shoulderUp, new byte[] {pin4, fwd1, fwd2});
-		buttonHash.put(R.id.shoulderDown, new byte[] {pin4, rev1, rev2});
-		buttonHash.put(R.id.steerLeft, new byte[] {pin5, fwd1, fwd2});
-		buttonHash.put(R.id.steerRight, new byte[] {pin5, rev1, rev2});
-		buttonHash.put(R.id.wristUp, new byte[] {pin6, fwd1, fwd2});
-		buttonHash.put(R.id.wristDown, new byte[] {pin6, rev1, rev2});
-		buttonHash.put(R.id.elbowLeft, new byte[] {pin7, fwd1, fwd2});
-		buttonHash.put(R.id.elbowRight, new byte[] {pin7, rev1, rev2});
-		buttonHash.put(R.id.clawOpen, new byte[] {pin8, fwd1, fwd2});
-		buttonHash.put(R.id.clawClose, new byte[] {pin8, rev1, rev2});
-		buttonHash.put(R.id.handLeft, new byte[] {pin9, fwd1, fwd2});
-		buttonHash.put(R.id.handRight, new byte[] {pin9, rev1, rev2});
+		buttonHash.put(R.id.steerLeft, new byte[] {pin3, fwd1, fwd2});
+		buttonHash.put(R.id.steerRight, new byte[] {pin3, rev1, rev2});
+		buttonHash.put(R.id.baseLeft, new byte[] {pin4, fwd1, fwd2});
+		buttonHash.put(R.id.baseRight, new byte[] {pin4, rev1, rev2});
+		buttonHash.put(R.id.shoulderUp, new byte[] {pin5, fwd1, fwd2});
+		buttonHash.put(R.id.shoulderDown, new byte[] {pin5, rev1, rev2});
+		buttonHash.put(R.id.elbowLeft, new byte[] {pin6, fwd1, fwd2});
+		buttonHash.put(R.id.elbowRight, new byte[] {pin6, rev1, rev2});
+		buttonHash.put(R.id.wristUp, new byte[] {pin7, fwd1, fwd2});
+		buttonHash.put(R.id.wristDown, new byte[] {pin7, rev1, rev2});
+		buttonHash.put(R.id.handLeft, new byte[] {pin8, fwd1, fwd2});
+		buttonHash.put(R.id.handRight, new byte[] {pin8, rev1, rev2});
+		buttonHash.put(R.id.clawOpen, new byte[] {pin9, fwd1, fwd2});
+		buttonHash.put(R.id.clawClose, new byte[] {pin9, rev1, rev2});
 	}
 	
 	// add buttons to array with touch listeners
